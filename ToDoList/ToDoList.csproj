@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -17,8 +18,9 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -45,6 +47,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -112,12 +122,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -168,15 +172,86 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ToDoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006151131473_ToDo1.cs" />
+    <Compile Include="Migrations\202006151131473_ToDo1.Designer.cs">
+      <DependentUpon>202006151131473_ToDo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181234347_premium.cs" />
+    <Compile Include="Migrations\202006181234347_premium.Designer.cs">
+      <DependentUpon>202006181234347_premium.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181241572_premiu.cs" />
+    <Compile Include="Migrations\202006181241572_premiu.Designer.cs">
+      <DependentUpon>202006181241572_premiu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181641074_categories.cs" />
+    <Compile Include="Migrations\202006181641074_categories.Designer.cs">
+      <DependentUpon>202006181641074_categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181644344_categories1.cs" />
+    <Compile Include="Migrations\202006181644344_categories1.Designer.cs">
+      <DependentUpon>202006181644344_categories1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181708238_cat.cs" />
+    <Compile Include="Migrations\202006181708238_cat.Designer.cs">
+      <DependentUpon>202006181708238_cat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006181716501_cat1.cs" />
+    <Compile Include="Migrations\202006181716501_cat1.Designer.cs">
+      <DependentUpon>202006181716501_cat1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191333379_CategoryRefactored.cs" />
+    <Compile Include="Migrations\202006191333379_CategoryRefactored.Designer.cs">
+      <DependentUpon>202006191333379_CategoryRefactored.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191443126_userrole.cs" />
+    <Compile Include="Migrations\202006191443126_userrole.Designer.cs">
+      <DependentUpon>202006191443126_userrole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191526109_delete-datetime.cs" />
+    <Compile Include="Migrations\202006191526109_delete-datetime.designer.cs">
+      <DependentUpon>202006191526109_delete-datetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191719069_categoryId.cs" />
+    <Compile Include="Migrations\202006191719069_categoryId.designer.cs">
+      <DependentUpon>202006191719069_categoryId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191720169_categoryId1.cs" />
+    <Compile Include="Migrations\202006191720169_categoryId1.designer.cs">
+      <DependentUpon>202006191720169_categoryId1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191730303_categoryId2.cs" />
+    <Compile Include="Migrations\202006191730303_categoryId2.designer.cs">
+      <DependentUpon>202006191730303_categoryId2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191804588_categoryId3.cs" />
+    <Compile Include="Migrations\202006191804588_categoryId3.designer.cs">
+      <DependentUpon>202006191804588_categoryId3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006201452455_addingsomevalidators.cs" />
+    <Compile Include="Migrations\202006201452455_addingsomevalidators.designer.cs">
+      <DependentUpon>202006201452455_addingsomevalidators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CustomValidator.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ToDo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,18 +259,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Custom_Scripts\AddCheckboxListener.js" />
+    <Content Include="Custom_Scripts\BuildTable.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AddCheckBoxListener.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\BuildTable.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -235,6 +320,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ToDoes\Create.cshtml" />
+    <Content Include="Views\ToDoes\Delete.cshtml" />
+    <Content Include="Views\ToDoes\Details.cshtml" />
+    <Content Include="Views\ToDoes\Edit.cshtml" />
+    <Content Include="Views\ToDoes\Index.cshtml" />
+    <Content Include="Views\ToDoes\_ToDoTable.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +347,53 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006151131473_ToDo1.resx">
+      <DependentUpon>202006151131473_ToDo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181234347_premium.resx">
+      <DependentUpon>202006181234347_premium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181241572_premiu.resx">
+      <DependentUpon>202006181241572_premiu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181641074_categories.resx">
+      <DependentUpon>202006181641074_categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181644344_categories1.resx">
+      <DependentUpon>202006181644344_categories1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181708238_cat.resx">
+      <DependentUpon>202006181708238_cat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006181716501_cat1.resx">
+      <DependentUpon>202006181716501_cat1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191333379_CategoryRefactored.resx">
+      <DependentUpon>202006191333379_CategoryRefactored.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191443126_userrole.resx">
+      <DependentUpon>202006191443126_userrole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191526109_delete-datetime.resx">
+      <DependentUpon>202006191526109_delete-datetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191719069_categoryId.resx">
+      <DependentUpon>202006191719069_categoryId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191720169_categoryId1.resx">
+      <DependentUpon>202006191720169_categoryId1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191730303_categoryId2.resx">
+      <DependentUpon>202006191730303_categoryId2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191804588_categoryId3.resx">
+      <DependentUpon>202006191804588_categoryId3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006201452455_addingsomevalidators.resx">
+      <DependentUpon>202006201452455_addingsomevalidators.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -285,7 +428,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
